@@ -7,6 +7,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
 
 @WebServlet("/helloservlet")
 public class HelloServlet extends HttpServlet {
@@ -15,7 +17,8 @@ public class HelloServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
         
-        var out = resp.getOutputStream();
+        //var out = resp.getOutputStream();
+        ServletOutputStream out = resp.getOutputStream();
         out.println("This is a Jakarta EE 9 Servlet!");
         out.println();
         out.println("this.getServletContext().getServerInfo() = " + this.getServletContext().getServerInfo());
